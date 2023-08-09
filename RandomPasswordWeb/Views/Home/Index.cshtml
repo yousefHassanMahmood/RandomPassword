@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+    <style>
+        .button {
+            padding: 15px 25px;
+            font-size: 24px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            background-color: #33AFFF;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+
+            .button:hover {
+                background-color: #00008b
+            }
+
+            .button:active {
+                background-color: #33AFFF;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
+    </style>
+</head>
+
+<div class="text-center">
+
+    <label for="lenPassword">Password Length:</label>
+    <input type="number" id="lenPassword" >
+    <button class="button button1" id="generateButton">Generate</button>
+    <p id="generatedPassword"></p>
+
+
+
+
+    <script>
+        document.getElementById("generateButton").addEventListener("click", function () {
+            var lengthPass = parseInt(document.getElementById("lenPassword").value);
+            if (lengthPass > 0 && lengthPass <= 1000) {
+                fetch(`/Home/GetPassword?passLength=${lengthPass}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById("generatedPassword").innerHTML = data;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching password:", error);
+                    });
+            } else {
+                alert("Please enter a valid password length.");
+            }
+        });
+
+
+    </script>
+
+</div>
+

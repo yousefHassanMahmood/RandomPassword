@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>perspective-dice-six-faces-random_38559.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="perspective-dice-six-faces-random_38559.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\business\business.csproj" />
